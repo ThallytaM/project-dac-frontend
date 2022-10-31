@@ -5,12 +5,13 @@ import './CreateClient.css';
 export default class CreateClient extends React.Component{
 
   state = {
-    name: null,
-    cpf: null,
-    telephone: null,
-    age: null
+    name: '',
+    cpf: '',
+    telephone: '',
+    age: 0
   }
   save = ()=> {
+    //Lógica para salvar
   }
 
   render(){
@@ -34,7 +35,7 @@ export default class CreateClient extends React.Component{
 
           <br/>
           <label> Age </label>
-          <input type = 'text' value={this.state.age} onChange={(e) => {this.setState({age: e.target.value})}}/>
+          <input type = 'number' value={this.state.age} onChange={(e) => {this.setState({age: e.target.value})}}/>
 
           <br/>
           <button onClick={this.save} > Save</button>

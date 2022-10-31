@@ -9,7 +9,7 @@ import CreateContract from './CreateContract';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CreateProperty/>
+    <CreateClient/>
   </React.StrictMode>
 );
 

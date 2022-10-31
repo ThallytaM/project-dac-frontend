@@ -13,8 +13,8 @@
   }
 }
 
-.Property-header {
-  background-color: #282c34;
+.CreateProperty {
+  background-color: #4b5a78;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

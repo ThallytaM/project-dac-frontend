@@ -6,9 +6,9 @@ export default class CreateProperty extends React.Component{
 
 
   state = {
-    address: null,
-    area: null,
-    rentValue: null
+    address: '',
+    area: 0,
+    rentValue: 0
   }
   save = ()=> {
   }
@@ -26,11 +26,11 @@ export default class CreateProperty extends React.Component{
           
           <br/>
           <label> Area </label>
-          <input type = 'text' value={this.state.area} onChange={(e) => {this.setState({area: e.target.value})}}/>
+          <input type = 'number' value={this.state.area} onChange={(e) => {this.setState({area: e.target.value})}}/>
 
           <br/>
           <label> Rent Value </label>
-          <input type = 'text' value={this.state.rentValue} onChange={(e) => {this.setState({rentValue: e.target.value})}}/>
+          <input type = 'number' value={this.state.rentValue} onChange={(e) => {this.setState({rentValue: e.target.value})}}/>
 
           <br/>
           <button onClick={this.save} > Save</button>

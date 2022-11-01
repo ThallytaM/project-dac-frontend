@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import CreateClient from './CreateClient';
-import CreateProperty from './CreateProperty';
-import CreateContract from './CreateContract';
+import UpdateClient from './UpdateClient';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CreateClient/>
+    <UpdateClient/>
   </React.StrictMode>
 );
 

@@ -10,6 +10,8 @@ export default class App extends React.Component{
     number2: 0,
     result:0
   }
+
+  
   sum = ()=> {
     const result = parseInt(this.state.number1) + parseInt(this.state.number2);
     this.setState({result});
@@ -32,6 +34,7 @@ export default class App extends React.Component{
           
           <br/> 
           <label>O resultado é: {this.state.result}</label>
+
       </div>
     );
   }

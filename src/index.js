@@ -10,13 +10,15 @@ import UpdateClient from './screens/updateClient/UpdateClient';
 import CreateProperty from './screens/createProperty/CreateProperty';
 import UpdateProperty from './screens/updateProperty/UpdateProperty';
 import ViewProperty from './screens/viewProperty/ViewProperty';
+import DeleteContract from './screens/deleteContract/DeleteContract';
+import ViewContract from './screens/viewContract/ViewContract';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ViewProperty/>
+    <ViewContract/>
   </React.StrictMode>
 );
 

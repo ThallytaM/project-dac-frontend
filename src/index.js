@@ -1,14 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import DeleteClient from './screens/deleteClient/DeleteClient';
+import CreateClient from './screens/createClient/CreateClient';
+import ViewClient from './screens/viewClient/ViewClient';
+
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import UpdateClient from './UpdateClient';
+import UpdateClient from './screens/updateClient/UpdateClient';
+import CreateProperty from './screens/createProperty/CreateProperty';
+import UpdateProperty from './screens/updateProperty/UpdateProperty';
+import ViewProperty from './screens/viewProperty/ViewProperty';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UpdateClient/>
+    <ViewProperty/>
   </React.StrictMode>
 );
 

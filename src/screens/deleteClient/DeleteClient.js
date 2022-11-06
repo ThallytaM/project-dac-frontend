@@ -16,9 +16,6 @@ class DeleteClient extends React.Component{
   }
   delete = ()=> {
     axios.delete(`http://localhost:8080/api/client/${this.state.id}`,
-    {
-      id: this.state.id
-    }
     ).then(response => 
       {
         console.log(response);

@@ -17,7 +17,7 @@ function AppRoutes(props){
             <Route component={Login} path = "/login"/>
             <Route component={CreateUser} path = "/createUser"/>
             <Route component={CreateClient} path = "/createClient"/>
-            <Route component={UpdateClient} path = "/updateClient"/>
+            <Route component={UpdateClient} path = "/updateClient/:id"/>
             <Route component={DeleteClient} path = "/deleteClient"/>
             <Route component={ViewClient} path = "/viewClient"/>
 

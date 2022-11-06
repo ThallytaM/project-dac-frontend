@@ -16,8 +16,8 @@ class CreateClient extends React.Component{
     telephone: '',
     age: 0
   }
-  save = ()=> {
-    axios.post('http://localhost:8080/api/client',
+  save = async ()=> {
+    await axios.post('http://localhost:8080/api/client',
     {
       name: this.state.name,
       cpf: this.state.cpf,
@@ -31,8 +31,8 @@ class CreateClient extends React.Component{
         {
           console.log(error.response);
         }
-        
       );
+
   }
 
   render(){

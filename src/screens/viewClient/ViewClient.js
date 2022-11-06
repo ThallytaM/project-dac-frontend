@@ -2,11 +2,11 @@ import React from 'react'
 import client from '../../img/client.jpg'
 import './ViewClient.css';
 
-import 'bootswatch/dist/flatly/bootstrap.css';
+import { withRouter } from 'react-router-dom'; 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
-export default class ViewClient extends React.Component{
+class ViewClient extends React.Component{
 
   state = {
     id: '',
@@ -49,3 +49,4 @@ export default class ViewClient extends React.Component{
     );
   }
 }
+export default withRouter(ViewClient);

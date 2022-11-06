@@ -5,7 +5,9 @@ import { withRouter } from 'react-router-dom';
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
+
 class Login extends React.Component{
+
 
   state = {
     email: '',
@@ -38,6 +40,7 @@ class Login extends React.Component{
                 
                 <br/>
                 <button onClick={this.login} type = 'button' className="btn btn-primary"> Entrar </button>
+
                 <button onClick={this.createUser} type = 'button' className="btn btn-primary"> Cadastrar </button>
            
                 </div>

@@ -2,11 +2,11 @@ import React from 'react'
 import client from '../../img/client.jpg'
 import './CreateClient.css';
 
-import 'bootswatch/dist/flatly/bootstrap.css';
+import { withRouter } from 'react-router-dom'; 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
-export default class CreateClient extends React.Component{
+class CreateClient extends React.Component{
 
   state = {
     name: '',
@@ -20,11 +20,13 @@ export default class CreateClient extends React.Component{
 
   render(){
     return (
-      <div className="CreateClient">
-         <img src = {client}/>
+      <div className="container">
           
-          <Card title = "Adicionar cliente">
+          <Card title = "Novo cliente">
+          <img src = {client}/>
             <div className='row'>
+
+
               <div className='col-lg-12'>
                 <div className='bs-component'>
                 <FormGroup label = "ID Cliente: " htmlForm = "InputId">
@@ -63,3 +65,5 @@ export default class CreateClient extends React.Component{
     );
   }
 }
+
+export default withRouter(CreateClient);

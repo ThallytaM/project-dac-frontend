@@ -1,7 +1,8 @@
 import React from 'react'
 import './CreateUser.css';
 
-import { withRouter } from 'react-router-dom'; 
+import { withRouter } from 'react-router-dom';
+
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
@@ -13,14 +14,14 @@ class CreateUser extends React.Component{
     password:'',
     passwordRepeat:''
   }
-  creat = ()=> {
+  create = ()=> {
     console.log(this.state);
   }
 
-  cancel = ()=> {
-    this.props.history.push('/home');
-  }
 
+  cancel = ()=> {
+    this.props.history.push('/');
+}
 
   render(){
     return (
@@ -48,9 +49,9 @@ class CreateUser extends React.Component{
                 
       
                 <br/>
-                <button onClick={this.creat} type = 'button' className="btn btn-primary"> Salvar </button>
+                <button onClick={this.create} type = 'button' className="btn btn-primary"> Salvar </button>
                 
-                <button onClick={this.cancel} type = 'button' className="btn btn-primary"> Cancelar </button>
+                <button onClick={this.cancel} type = 'button' className="btn btn-primary">Cancelar </button>
       
                 </div>
               </div>

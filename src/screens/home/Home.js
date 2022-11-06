@@ -1,10 +1,10 @@
 import React from 'react'
 import './Home.css';
 
-import 'bootswatch/dist/flatly/bootstrap.css';
+import { withRouter } from 'react-router-dom'; 
 import Card from '../../components/Card';
 
-export default class CreateUser extends React.Component{
+class Home extends React.Component{
 
   render(){
     return (
@@ -23,3 +23,5 @@ export default class CreateUser extends React.Component{
     );
   }
 }
+
+export default withRouter(Home);

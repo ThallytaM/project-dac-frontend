@@ -17,13 +17,13 @@ export default class DeleteClient extends React.Component{
   }
 
   cancel = () =>{
-    //Lógica para cancelar
+    this.props.history.push('/');
 
   }
 
   render(){
     return (
-      <div className="DeleteClient">
+      <div className="container">
 
         <img src = {client}/>
         

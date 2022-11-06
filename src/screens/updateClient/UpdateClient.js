@@ -2,11 +2,11 @@ import React from 'react'
 import client from '../../img/client.jpg'
 import './UpdateClient';
 
-import 'bootswatch/dist/flatly/bootstrap.css';
+import { withRouter } from 'react-router-dom'; 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
-export default class UpdateClient extends React.Component{
+class UpdateClient extends React.Component{
 
   state = {
     id: '',
@@ -23,11 +23,10 @@ export default class UpdateClient extends React.Component{
 
   render(){
     return (
-      <div className="UpdateClient">
-
-          <img src = {client}/>
-          
+      <div className="container">
+          <img src = {client} className = "mx-auto d-block"/>
           <Card title = "Atualizar dados do Cliente: ">
+          
             <div className='row'>
               <div className='col-lg-12'>
                 <div className='bs-component'>
@@ -64,3 +63,4 @@ export default class UpdateClient extends React.Component{
     );
   }
 }
+export default withRouter(UpdateClient);

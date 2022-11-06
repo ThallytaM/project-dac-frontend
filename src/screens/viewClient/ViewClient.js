@@ -3,6 +3,8 @@ import client from '../../img/client.jpg'
 import './ViewClient.css';
 
 import { withRouter } from 'react-router-dom'; 
+import axios from 'axios';
+
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
@@ -16,7 +18,23 @@ class ViewClient extends React.Component{
     age: 0
   }
   find = ()=> {
-    //Lógica para list
+    axios.get('http://localhost:8080/api/client',
+    {
+      id: this.state.id,
+      name: this.state.name,
+      cpf: this.state.cpf,
+      telephone: this.state.telephone,
+      age: this.state.age
+    }
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+        
+      );
   }
 
   render(){

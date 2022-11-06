@@ -3,6 +3,8 @@ import client from '../../img/client.jpg'
 import './CreateClient.css';
 
 import { withRouter } from 'react-router-dom'; 
+import axios from 'axios';
+
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
@@ -15,7 +17,22 @@ class CreateClient extends React.Component{
     age: 0
   }
   save = ()=> {
-    //Lógica para salvar
+    axios.post('http://localhost:8080/api/client',
+    {
+      name: this.state.name,
+      cpf: this.state.cpf,
+      telephone: this.state.telephone,
+      age: this.state.age
+    }
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+        
+      );
   }
 
   render(){
@@ -29,9 +46,6 @@ class CreateClient extends React.Component{
 
               <div className='col-lg-12'>
                 <div className='bs-component'>
-                <FormGroup label = "ID Cliente: " htmlForm = "InputId">
-                <input type = 'number' className="form-control" id="id" placeholder="id client"  value={this.state.id} onChange={(e) => {this.setState({id: e.target.value})}}/>
-                </FormGroup> 
 
                 <FormGroup label = "Name" htmlForm = 'inputName'>
                   <input type="text" className="form-control" id="name" placeholder="Name" value={this.state.name} onChange={(e) => {this.setState({name: e.target.value})}}/> 
@@ -50,10 +64,8 @@ class CreateClient extends React.Component{
                 </FormGroup>
               
                 <br/>
-                <button onClick={this.save} type = 'button' className="btn btn-primary"> Atualizar </button>
-  
-                <label>{this.state.result}</label>
-    
+                <button onClick={this.save} type = 'button' className="btn btn-primary"> Salvar </button>
+      
                 </div>
               </div>
             </div>

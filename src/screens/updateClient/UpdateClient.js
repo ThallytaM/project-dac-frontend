@@ -3,23 +3,38 @@ import client from '../../img/client.jpg'
 import './UpdateClient';
 
 import { withRouter } from 'react-router-dom'; 
+import axios from 'axios';
+
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
 class UpdateClient extends React.Component{
 
   state = {
-    id: '',
+    id: 0,
     name: '',
     cpf: '',
     telephone: '',
     age: 0
   }
   save = ()=> {
-    const result = 'ID client: '+ parseInt(this.state.id) + ' || Name: ' + this.state.name + ' || CPF: ' + this.state.cpf + ' || Telephone: '+ this.state.telephone + ' || Age: ' + this.state.age;
-    this.setState({result});
-  }
- 
+    axios.put(`http://localhost:8080/api/client/${this.state.id}`,
+    {
+      name: this.state.name,
+      cpf: this.state.cpf,
+      telephone: this.state.telephone,
+      age: this.state.age
+    }
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+        
+      );
+  } 
 
   render(){
     return (
@@ -31,7 +46,7 @@ class UpdateClient extends React.Component{
               <div className='col-lg-12'>
                 <div className='bs-component'>
                 <FormGroup label = "ID Cliente: " htmlForm = "InputId">
-                <input type = 'number' className="form-control" id="id" placeholder="id client"  value={this.state.id} onChange={(e) => {this.setState({id: e.target.value})}}/>
+                <input number = 'text' className="form-control" id="id" placeholder="id client"  value={this.state.id} onChange={(e) => {this.setState({id: e.target.value})}}/>
                 </FormGroup> 
 
                 <FormGroup label = "Name" htmlForm = 'inputName'>
@@ -52,9 +67,7 @@ class UpdateClient extends React.Component{
               
                 <br/>
                 <button onClick={this.save} type = 'button' className="btn btn-primary"> Atualizar </button>
-  
-                <label>{this.state.result}</label>
-    
+      
                 </div>
               </div>
             </div>

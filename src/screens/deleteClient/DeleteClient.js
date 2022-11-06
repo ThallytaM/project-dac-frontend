@@ -2,18 +2,32 @@ import React from 'react'
 import client from '../../img/client.jpg'
 import './DeleteClient.css';
 
-import 'bootswatch/dist/flatly/bootstrap.css';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom'; 
+
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
 
 
-export default class DeleteClient extends React.Component{
+class DeleteClient extends React.Component{
 
   state = {
     id: 0
   }
   delete = ()=> {
-    //Lógica para deletar
+    axios.delete(`http://localhost:8080/api/client/${this.state.id}`,
+    {
+      id: this.state.id
+    }
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+        
+      );
   }
 
   cancel = () =>{
@@ -47,3 +61,5 @@ export default class DeleteClient extends React.Component{
     );
   }
 }
+
+export default withRouter(DeleteClient);

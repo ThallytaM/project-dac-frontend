@@ -2,21 +2,32 @@ import React from 'react'
 import contract from '../../img/contract.jpg'
 import './DeleteContract.css';
 
-import 'bootswatch/dist/flatly/bootstrap.css';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom'; 
+
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
-export default class DeleteContract extends React.Component{
+class DeleteContract extends React.Component{
 
   state = {
     id: 0
   }
   delete = ()=> {
-    //Lógica para deletar
+    axios.delete(`http://localhost:8080/api/contract/${this.state.id}`,
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+        
+      );
   }
 
   cancel = () =>{
-    //Lógica para cancelar
+    this.props.history.push('/');
 
   }
 
@@ -46,3 +57,5 @@ export default class DeleteContract extends React.Component{
     );
   }
 }
+
+export default withRouter(DeleteContract);

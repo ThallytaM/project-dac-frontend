@@ -16,11 +16,14 @@ function NavBar(){
         <ul className="navbar-nav me-auto">
             <NavBarItem href = "/" label = 'Home'/>
             <NavBarItem href = "/login" label = 'Login' />
+            <NavBarItem href = "/viewClient" label = 'Clientes'/>
             <NavBarItem href = "/createClient" label = 'Novo Cliente'/>
             <NavBarItem href = "/updateClient" label = 'Atualizar Cliente'/>
             <NavBarItem href = "/deleteClient" label = 'Deletar Cliente'/>
-            <NavBarItem href = "/viewClient" label = 'Buscar Cliente'/>
-
+            <NavBarItem href = "/viewProperty" label = 'Propriedades'/>
+            <NavBarItem href = "/createProperty" label = 'Nova Propriedade'/>
+            <NavBarItem href = "/updateProperty" label = 'Atualizar Propriedade'/>
+            <NavBarItem href = "/deleteProperty" label = 'Deletar Propriedade'/>
 
 
 

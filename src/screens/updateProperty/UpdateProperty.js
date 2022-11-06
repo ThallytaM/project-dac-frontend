@@ -1,11 +1,13 @@
 import React from 'react'
 import property from '../../img/property.jpg'
 import './UpdateProperty.css';
+
+import { withRouter } from 'react-router-dom'; 
+import axios from 'axios';
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
 
-export default class UpdateProperty extends React.Component{
-
+class UpdateProperty extends React.Component{
 
   state = {
     id: 0,
@@ -14,6 +16,20 @@ export default class UpdateProperty extends React.Component{
     rentValue: 0
   }
   save = ()=> {
+    axios.put(`http://localhost:8080/api/property/${this.state.id}`,
+    {
+      address: this.state.address,
+      area: this.state.area,
+      rentValue: this.state.rentValue
+    }
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+      );
   }
 
   render(){
@@ -28,7 +44,7 @@ export default class UpdateProperty extends React.Component{
             <div className='col-lg-12'>
               <div className='bs-component'>
               <FormGroup label = "ID" htmlForm = "inputID">
-              <input type = 'text' className="form-control" id="inputID" placeholder="Digite o ID" value={this.state.address} onChange={(e) => {this.setState({address: e.target.value})}}/>
+              <input type = 'number' className="form-control" id="inputID" placeholder="Digite o ID" value={this.state.id} onChange={(e) => {this.setState({id: e.target.value})}}/>
               </FormGroup> 
               <FormGroup label = "Endereço " htmlForm = "inputAddress">
               <input type = 'text' className="form-control" id="inputAddress" placeholder="Rua, número, Bairro, Cidade, Estado" value={this.state.address} onChange={(e) => {this.setState({address: e.target.value})}}/>
@@ -53,3 +69,5 @@ export default class UpdateProperty extends React.Component{
     );
   }
 }
+
+export default withRouter(UpdateProperty);

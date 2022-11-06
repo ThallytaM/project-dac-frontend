@@ -1,20 +1,34 @@
 import React from 'react'
 import property from '../../img/property.jpg'
 import './DeleteProperty.css';
+
+import { withRouter } from 'react-router-dom'; 
+import axios from 'axios';
+
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
+import UpdateProperty from '../updateProperty/UpdateProperty';
 
-export default class DeleteProperty extends React.Component{
+class DeleteProperty extends React.Component{
 
   state = {
     id: 0
   }
   delete = ()=> {
-    //Lógica para deletar
+    axios.delete(`http://localhost:8080/api/property/${this.state.id}`,
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+        
+      );
   }
 
   cancel = () =>{
-    //Lógica para cancelar
+    this.props.history.push('/');
 
   }
 
@@ -44,3 +58,5 @@ export default class DeleteProperty extends React.Component{
     );
   }
 }
+
+export default withRouter(DeleteProperty);

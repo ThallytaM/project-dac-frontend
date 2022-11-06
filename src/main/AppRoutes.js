@@ -8,6 +8,10 @@ import CreateClient from "../screens/createClient/CreateClient";
 import UpdateClient from "../screens/updateClient/UpdateClient";
 import DeleteClient from "../screens/deleteClient/DeleteClient";
 import ViewClient from "../screens/viewClient/ViewClient";
+import CreateProperty from "../screens/createProperty/CreateProperty";
+import UpdateProperty from "../screens/updateProperty/UpdateProperty";
+import DeleteProperty from "../screens/deleteProperty/DeleteProperty";
+import ViewProperty from "../screens/viewProperty/ViewProperty";
 
 
 function AppRoutes(props){
@@ -20,6 +24,10 @@ function AppRoutes(props){
             <Route component={UpdateClient} path = "/updateClient/:id"/>
             <Route component={DeleteClient} path = "/deleteClient"/>
             <Route component={ViewClient} path = "/viewClient"/>
+            <Route component={CreateProperty} path = "/createProperty"/>
+            <Route component={UpdateProperty} path = "/updateProperty"/>
+            <Route component={DeleteProperty} path = "/deleteProperty"/>
+            <Route component={ViewProperty} path = "/viewProperty"/>
 
 
             

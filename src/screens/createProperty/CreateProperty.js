@@ -1,10 +1,13 @@
 import React from 'react'
 import property from '../../img/property.jpg'
 import './CreateProperty.css';
+
+import { withRouter } from 'react-router-dom'; 
+import axios from 'axios';
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
 
-export default class CreateProperty extends React.Component{
+class CreateProperty extends React.Component{
 
 
   state = {
@@ -12,7 +15,21 @@ export default class CreateProperty extends React.Component{
     area: 0,
     rentValue: 0
   }
-  save = ()=> {
+  save = async ()=> {
+    await axios.post('http://localhost:8080/api/property',
+    {
+      address: this.state.address,
+      area: this.state.area,
+      rentValue: this.state.rentValue
+    }
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+      );
   }
 
   render(){
@@ -49,3 +66,5 @@ export default class CreateProperty extends React.Component{
     );
   }
 }
+
+export default withRouter(CreateProperty);

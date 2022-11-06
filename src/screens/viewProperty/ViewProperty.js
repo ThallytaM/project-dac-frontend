@@ -1,21 +1,85 @@
 import React from 'react'
 import property from '../../img/property.jpg'
 import './ViewProperty.css';
+
+import { withRouter } from 'react-router-dom'; 
+import axios from 'axios';
+
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
+import PropertiesTable from '../../components/PropertiesTable';
 
-export default class ViewProperty extends React.Component{
+class ViewProperty extends React.Component{
 
 
   state = {
     id: 0,
     address: '',
     area: 0,
-    rentValue: 0
+    rentValue: 0,
+    properties: []
   }
-  find = ()=> {
+  delete = (userId) => {
+    axios.delete(`http://localhost:8080/api/property/${userId}`,
+    ).then(response => 
+      {
+        this.find();
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+        
+      );
+  }
+  edit = (userId)=>{
+    this.props.history.push(`/updateProperty/${userId}`);
   }
 
+  find = ()=> {
+
+    var params = '?';
+
+    if(this.state.id != ''){
+      if(params != '?'){
+        params = `${params}&`;
+      }
+      params = `${params}id =${this.state.id}`;
+    }
+
+    if(this.state.address != ''){
+      if(params != '?'){
+        params = `${params}&`;
+      }
+      params = `${params}address =${this.state.address}`;
+    }
+
+    if(this.state.area != ''){
+      if(params != '?'){
+        params = `${params}&`;
+      }
+      params = `${params}area =${this.state.area}`;
+    }
+    
+    if(this.state.rentValue != ''){
+      if(params != '?'){
+        params = `${params}&`;
+      }
+      params = `${params}rentValue =${this.state.rentValue}`;
+    }
+
+    axios.get(`http://localhost:8080/api/property${params}`
+    ).then(response => 
+      {
+        const properties = response.data;
+        this.setState({properties});
+        console.log(properties);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+        
+      );
+  }
   render(){
     return (
       <div className="ViewProperty">
@@ -38,9 +102,24 @@ export default class ViewProperty extends React.Component{
               </div>
             </div>
           </div>
-        </Card>          
+        </Card>  
+        <br/>
+          <div className='row'>
+            <div className='col-lg-12'>
+              <div className='bs-component'>
+                <PropertiesTable properties={this.state.properties}
+                delete={this.delete}
+                edit = {this.edit}/>
+              </div>
+
+            </div>
+
+          </div>
+        
          
       </div>
     );
   }
 }
+
+export default withRouter(ViewProperty);

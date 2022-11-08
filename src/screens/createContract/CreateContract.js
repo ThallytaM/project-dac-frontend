@@ -2,22 +2,38 @@ import React from 'react'
 import contract from '../../img/contract.jpg'
 import './CreateContract.css';
 
-import 'bootswatch/dist/flatly/bootstrap.css';
+import { withRouter } from 'react-router-dom'; 
+import axios from 'axios';
+
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
-export default class CreateContract extends React.Component{
+class CreateContract extends React.Component{
 
   state = {
-    client: null,
-    property: null
+    clientId: 0,
+    propertyId: 0
   }
-  save = ()=> {
+  save = async ()=> {
+    await axios.post('http://localhost:8080/api/contract',
+    {
+      clientId: this.state.clientId,
+      propertyId: this.state.propertyId
+    }
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+      );
+
   }
 
   render(){
     return (
-      <div className="CreateContract">
+      <div className="container">
 
         <img src = {contract}/>
 
@@ -26,11 +42,11 @@ export default class CreateContract extends React.Component{
             <div className='col-lg-12'>
               <div className='bs-component'>
                 <FormGroup label = "ID Cliente " htmlForm = "idClient">
-                <input type = 'number' className="form-control" id="idClient" placeholder="ID do Cliente" value={this.state.client} onChange={(e) => {this.setState({client: e.target.value})}}/>
+                <input type = 'number' className="form-control" id="idClient" placeholder="ID do Cliente" value={this.state.clientId} onChange={(e) => {this.setState({clientId: e.target.value})}}/>
                 </FormGroup> 
 
                 <FormGroup label = "ID Propriedade " htmlForm = "idProperty">
-                <input type = 'number' className="form-control" id="idProperty" placeholder="ID da propriedade" value={this.state.property} onChange={(e) => {this.setState({property: e.target.value})}}/>
+                <input type = 'number' className="form-control" id="idProperty" placeholder="ID da propriedade" value={this.state.propertyId} onChange={(e) => {this.setState({propertyId: e.target.value})}}/>
                 </FormGroup> 
 
                 <br/>
@@ -46,3 +62,6 @@ export default class CreateContract extends React.Component{
     );
   }
 }
+
+
+export default withRouter(CreateContract);

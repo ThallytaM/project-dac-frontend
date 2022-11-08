@@ -33,7 +33,7 @@ class DeleteContract extends React.Component{
 
   render(){
     return (
-      <div className="DeleteContract">
+      <div className="container">
 
         <img src = {contract}/>
         

@@ -8,7 +8,7 @@ import axios from 'axios';
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
-class CreateClient extends React.Component{
+class CreateClient extends React .Component{
 
   state = {
     name: '',

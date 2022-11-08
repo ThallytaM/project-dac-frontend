@@ -12,6 +12,10 @@ import CreateProperty from "../screens/createProperty/CreateProperty";
 import UpdateProperty from "../screens/updateProperty/UpdateProperty";
 import DeleteProperty from "../screens/deleteProperty/DeleteProperty";
 import ViewProperty from "../screens/viewProperty/ViewProperty";
+import CreateContract from "../screens/createContract/CreateContract";
+import UpdateContract from "../screens/updateContract/UpdateContract";
+import DeleteContract from "../screens/deleteContract/DeleteContract";
+import ViewContract from "../screens/viewContract/ViewContract";
 
 
 function AppRoutes(props){
@@ -21,16 +25,17 @@ function AppRoutes(props){
             <Route component={Login} path = "/login"/>
             <Route component={CreateUser} path = "/createUser"/>
             <Route component={CreateClient} path = "/createClient"/>
-            <Route component={UpdateClient} path = "/updateClient/:id"/>
+            <Route component={UpdateClient} path = "/updateClient/"/>
             <Route component={DeleteClient} path = "/deleteClient"/>
             <Route component={ViewClient} path = "/viewClient"/>
             <Route component={CreateProperty} path = "/createProperty"/>
             <Route component={UpdateProperty} path = "/updateProperty"/>
             <Route component={DeleteProperty} path = "/deleteProperty"/>
             <Route component={ViewProperty} path = "/viewProperty"/>
-
-
-            
+            <Route component={CreateContract} path = "/createContract"/>
+            <Route component={UpdateContract} path = "/updateContract"/>
+            <Route component={DeleteContract} path = "/deleteContract"/>
+            <Route component={ViewContract} path = "/viewContract"/>             
         </BrowserRouter>
 
     );

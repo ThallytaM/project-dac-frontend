@@ -2,18 +2,34 @@ import React from 'react'
 import contract from '../../img/contract.jpg'
 import './UpdateContract.css';
 
-import 'bootswatch/dist/flatly/bootstrap.css';
+import { withRouter } from 'react-router-dom'; 
+import axios from 'axios';
+
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
-export default class CreateContract extends React.Component{
+class UpdateContract extends React.Component{
 
   state = {
-    id: null,
-    client: null,
-    property: null
+    id:0 ,
+    clientId: 0,
+    propertyId: 0
   }
-  save = ()=> {
+  save =  ()=> {
+    axios.put(`http://localhost:8080/api/contract/${this.state.id}`,
+        {
+      clientId: this.state.clientId,
+      propertyId: this.state.propertyId
+    }
+    ).then(response => 
+      {
+        console.log(response);
+      }).catch(error =>
+        {
+          console.log(error.response);
+        }
+      );
+
   }
 
   render(){
@@ -31,11 +47,11 @@ export default class CreateContract extends React.Component{
                 </FormGroup> 
 
                 <FormGroup label = "ID Cliente " htmlForm = "idClient">
-                <input type = 'number' className="form-control" id="idClient" placeholder="ID do Cliente" value={this.state.client} onChange={(e) => {this.setState({client: e.target.value})}}/>
+                <input type = 'number' className="form-control" id="idClient" placeholder="ID do Cliente" value={this.state.clientId} onChange={(e) => {this.setState({clientId: e.target.value})}}/>
                 </FormGroup> 
 
                 <FormGroup label = "ID Propriedade " htmlForm = "idProperty">
-                <input type = 'number' className="form-control" id="idProperty" placeholder="ID da propriedade" value={this.state.property} onChange={(e) => {this.setState({property: e.target.value})}}/>
+                <input type = 'number' className="form-control" id="idProperty" placeholder="ID da propriedade" value={this.state.propertyId} onChange={(e) => {this.setState({propertyId: e.target.value})}}/>
                 </FormGroup> 
 
                 <br/>
@@ -49,3 +65,4 @@ export default class CreateContract extends React.Component{
     );
   }
 }
+export default withRouter(UpdateContract);

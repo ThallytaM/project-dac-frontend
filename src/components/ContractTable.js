@@ -13,14 +13,13 @@ export default props => {
                 <button type = "button" title="Editar" className="btn btn-primary"
                 onClick={e => props.edit(contract.id)}>
                 </button>
-                <button type = "button" title="Excluir" className="btn btn-primary"
+                <button type = "button" title="Excluir" className="btn btn-secondary"
                 onClick={e => props.delete(contract.id)}>
                 </button>
             </td>
         </tr>
     )
     })
-
 
     return(
     

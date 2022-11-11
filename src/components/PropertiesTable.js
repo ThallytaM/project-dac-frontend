@@ -13,7 +13,7 @@ export default props => {
                 <button type = "button" title="Editar" className="btn btn-primary"
                 onClick={e => props.edit(property.id)}>
                 </button>
-                <button type = "button" title="Excluir" className="btn btn-primary"
+                <button type = "button" title="Excluir" className="btn btn-secondary"
                 onClick={e => props.delete(property.id)}>
                 </button>
             </td>

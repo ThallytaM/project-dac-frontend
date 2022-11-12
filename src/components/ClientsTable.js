@@ -8,6 +8,8 @@ export default props => {
             <td>{client.id}</td>
             <td>{client.name}</td>
             <td>{client.cpf}</td>
+            <td>{client.telephone}</td>
+            <td>{client.age}</td>
 
             <td>
                 <button type = "button" title="Editar" className="btn btn-primary"
@@ -30,6 +32,8 @@ export default props => {
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">CPF</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Idade</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>

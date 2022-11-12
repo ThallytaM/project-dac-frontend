@@ -20,6 +20,10 @@ class ViewClient extends React.Component{
     clients: []
   }
 
+  componentDidMount(){
+    this.find();
+  }
+
   delete = (userId) => {
     axios.delete(`http://localhost:8080/api/client/${userId}`,
     ).then(response => 
@@ -74,6 +78,7 @@ class ViewClient extends React.Component{
         
       );
   }
+
 
   render(){
     return (

@@ -18,6 +18,10 @@ class ViewContract extends React.Component{
     contractDate: '',
     contracts: []
   }
+  componentDidMount(){
+    this.find();
+  }
+ 
 
   delete = (userId) => {
     axios.delete(`http://localhost:8080/api/contract/${userId}`,

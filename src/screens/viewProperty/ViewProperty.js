@@ -19,6 +19,10 @@ class ViewProperty extends React.Component{
     rentValue: 0,
     properties: []
   }
+
+   componentDidMount(){
+    this.find();
+  }
   delete = (userId) => {
     axios.delete(`http://localhost:8080/api/property/${userId}`,
     ).then(response => 

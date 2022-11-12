@@ -23,8 +23,8 @@ class ViewProperty extends React.Component{
    componentDidMount(){
     this.find();
   }
-  delete = (userId) => {
-    axios.delete(`http://localhost:8080/api/property/${userId}`,
+  delete = (propertyId) => {
+    axios.delete(`http://localhost:8080/api/property/${propertyId}`,
     ).then(response => 
       {
         this.find();
@@ -35,8 +35,8 @@ class ViewProperty extends React.Component{
         
       );
   }
-  edit = (userId)=>{
-    this.props.history.push(`/updateProperty/${userId}`);
+  edit = (propertyId)=>{
+    this.props.history.push(`/updateProperty/${propertyId}`);
   }
 
   find = ()=> {
@@ -70,12 +70,12 @@ class ViewProperty extends React.Component{
       }
       params = `${params}rentValue =${this.state.rentValue}`;
     }
-
-    axios.get(`http://localhost:8080/api/property${params}`
-    ).then(response => 
+    axios.get(`http://localhost:8080/api/property${params}`)
+    .then(response => 
       {
         const properties = response.data;
         this.setState({properties});
+
         console.log(properties);
       }).catch(error =>
         {

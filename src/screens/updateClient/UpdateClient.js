@@ -42,7 +42,7 @@ class UpdateClient extends React.Component{
       );
   } 
   cancel = () => {
-    this.props.history.push("/");
+    this.props.history.push("/ViewClient");
   }
 
   findById = (userId) => {
@@ -83,23 +83,23 @@ class UpdateClient extends React.Component{
               <div className='col-lg-12'>
                 <div className='bs-component'>
                 <FormGroup label = "ID Cliente: " htmlForm = "InputId">
-                <input number = 'text'disabled= {true}className="form-control" id="InputId" placeholder="id client"  value={this.state.id} onChange={e => {this.setState({id: e.target.value})}}/>
+                <input number = 'text'disabled= {true}className="form-control" id="InputId" value={this.state.id} onChange={e => {this.setState({id: e.target.value})}}/>
                 </FormGroup> 
 
                 <FormGroup label = "Name" htmlForm = 'inputName'>
-                  <input type="text" className="form-control" id="inputName" placeholder="Name" value={this.state.name} onChange={e => {this.setState({name: e.target.value})}}/> 
+                  <input type="text" className="form-control" id="inputName" value={this.state.name} onChange={e => {this.setState({name: e.target.value})}}/> 
                 </FormGroup>
 
                 <FormGroup label = "CPF: " htmlForm = 'inputCpf'>
-                  <input type = 'text' className="form-control" id="inputCpf" placeholder="xxx.xxx.xxx-xx" value={this.state.cpf} onChange={e => {this.setState({cpf: e.target.value})}}/>
+                  <input type = 'text' className="form-control" id="inputCpf"  value={this.state.cpf} onChange={e => {this.setState({cpf: e.target.value})}}/>
                 </FormGroup>
                 
                 <FormGroup label = "Telefone: " htmlForm = 'inputTel'>
-                  <input type = 'text' className="form-control" id="inputTel" placeholder="(99) 99999-9999"  value={this.state.telephone} onChange={e => {this.setState({telephone: e.target.value})}}/>
+                  <input type = 'text' className="form-control" id="inputTel" value={this.state.telephone} onChange={e => {this.setState({telephone: e.target.value})}}/>
                 </FormGroup>
                 
                 <FormGroup label = "Idade: " htmlForm = 'inputAge'>
-                  <input type = 'number' className="form-control" id="inputAge" placeholder=""  value={this.state.age} onChange={e => {this.setState({age: e.target.value})}}/>
+                  <input type = 'number' className="form-control" id="inputAge"  value={this.state.age} onChange={e => {this.setState({age: e.target.value})}}/>
                 </FormGroup>
               
                 <br/>

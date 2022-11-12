@@ -29,7 +29,7 @@ function AppRoutes(props){
             <Route component={DeleteClient} path = "/deleteClient"/>
             <Route component={ViewClient} path = "/viewClient"/>
             <Route component={CreateProperty} path = "/createProperty"/>
-            <Route component={UpdateProperty} path = "/updateProperty"/>
+            <Route component={UpdateProperty} path = "/updateProperty/:id"/>
             <Route component={DeleteProperty} path = "/deleteProperty"/>
             <Route component={ViewProperty} path = "/viewProperty"/>
             <Route component={CreateContract} path = "/createContract"/>

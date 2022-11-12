@@ -34,7 +34,7 @@ class CreateProperty extends React.Component{
 
   render(){
     return (
-      <div className="CreateProperty">
+      <div className="container">
 
         <img src = {property}/>
         

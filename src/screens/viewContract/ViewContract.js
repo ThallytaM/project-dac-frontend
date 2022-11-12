@@ -23,8 +23,8 @@ class ViewContract extends React.Component{
   }
  
 
-  delete = (userId) => {
-    axios.delete(`http://localhost:8080/api/contract/${userId}`,
+  delete = (contractId) => {
+    axios.delete(`http://localhost:8080/api/contract/${contractId}`,
     ).then(response => 
       {
         this.find();
@@ -35,8 +35,8 @@ class ViewContract extends React.Component{
         
       );
   }
-  edit = (userId)=>{
-    this.props.history.push(`/updateContract/${userId}`);
+  edit = (contractId)=>{
+    this.props.history.push(`/updateContract/${contractId}`);
   }
 
   find = ()=> {
@@ -95,7 +95,7 @@ class ViewContract extends React.Component{
               <div className='col-lg-12'>
                 <div className='bs-component'>
                 <FormGroup label = "Id " htmlForm = "InputId">
-                 <input type="text" className="form-control" id="inputId" placeholder = 'Digite o Id do cliente' value={this.state.id} onChange={(e) => {this.setState({id: e.target.value})}} /> 
+                 <input type="text" className="form-control" id="inputId" disabled="true" value={this.state.id} onChange={(e) => {this.setState({id: e.target.value})}} /> 
                 </FormGroup>      
                 
                 <FormGroup label = "ID Cliente " htmlForm = "idClient">
@@ -105,10 +105,6 @@ class ViewContract extends React.Component{
                 <FormGroup label = "ID Propriedade " htmlForm = "idProperty">
                 <input type = 'number' className="form-control" id="idProperty" placeholder="ID da propriedade" value={this.state.propertyId} onChange={(e) => {this.setState({propertyId: e.target.value})}}/>
                 </FormGroup> 
-
-                <FormGroup label = "ID Propriedade " htmlForm = "idProperty">
-                <input type = 'number' className="form-control" id="idProperty" placeholder="ID da propriedade" value={this.state.propertyId} onChange={(e) => {this.setState({propertyId: e.target.value})}}/>
-                </FormGroup>
 
                 <FormGroup label = "Data do Contrato " htmlForm = "contractDate">
                 <input type = 'number' className="form-control" id="contractDate" placeholder="data do contrato" value={this.state.contractDate} onChange={(e) => {this.setState({contractDate: e.target.value})}}/>

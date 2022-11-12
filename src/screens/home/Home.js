@@ -7,6 +7,12 @@ import Card from '../../components/Card';
 
 class Home extends React.Component{
 
+   getLoggedUser = () => {
+    var value = localStorage.getItem("loggedUser");
+    var user = JSON.parse(value);
+    return user;
+   }
+
   render(){
     return (
       <div className="container">
@@ -18,6 +24,8 @@ class Home extends React.Component{
             <div className='row'>
               <div className='col-lg-12'>
                 <div className='bs-component'>
+                <label>Usuário logado: {this.getLoggedUser()}</label>
+
           
           
                 </div>

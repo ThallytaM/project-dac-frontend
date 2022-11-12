@@ -1,6 +1,7 @@
 import React from 'react'
 import './Login.css';
 
+import axios from 'axios';
 import { withRouter } from 'react-router-dom'; 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
@@ -14,7 +15,18 @@ class Login extends React.Component{
     password:'',
   }
   login = ()=> {
-    console.log(this.state);
+    axios.post('http://localhost:8080/api/login',
+    {
+      email: this.state.email,
+      password: this.state.password
+    }
+    ).then(response => 
+      {
+        localStorage.setItem('loggedUser', JSON.stringify(response.data));
+        this.props.history.push("/");
+      }).catch(error =>{
+        console.log(error.response);
+      });
   }
 
   createUser = ()=> {

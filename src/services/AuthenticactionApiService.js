@@ -1,5 +1,5 @@
 import ApiService, {LOGGED_USER, TOKEN} from "./ApiService";
-import StorageService from "../services/StorareService";
+import StorageService from "../services/StorageService";
 
 export default class AuthenticationApiService extends ApiService {
 

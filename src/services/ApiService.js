@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import StorageService from "../services/StorareService";
+import StorageService from "../services/StorageService";
 
 export const LOGGED_USER = 'loggedUser';
 export const TOKEN = 'token';

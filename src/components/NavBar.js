@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../img/logo192.png';
 
 import NavBarItem from './NavBarItem';
+import {AuthConsumer} from "../main/SessionProvider";
 
 
-function NavBar(){
+function NavBar(props){
 
     return(
         <div className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -19,14 +20,16 @@ function NavBar(){
         <div className="collapse navbar-collapse" id="navbarColor01">
         <div className="mr-auto"></div>
         <ul className="navbar-nav me-auto">
-            <NavBarItem href = "/" label = 'Home'/>
-            <NavBarItem href = "/login" label = 'Login' />
-            <NavBarItem href = "/viewClient" label = 'Clientes'/>
-            <NavBarItem href = "/createClient" label = 'Novo Cliente'/>
-            <NavBarItem href = "/viewProperty" label = 'Propriedades'/>
-            <NavBarItem href = "/createProperty" label = 'Nova Propriedade'/>
-            <NavBarItem href = "/viewContract" label = 'Contratos'/>
-            <NavBarItem href = "/createContract" label = 'Novo Contrato'/>
+            <NavBarItem render={props.isAuthenticated} href = "/" label = 'Home'/>
+            <NavBarItem render={!props.isAuthenticated} href = "/login" label = 'Login' />
+            
+            <NavBarItem render={props.isAuthenticated} href = "/viewClient" label = 'Clientes'/>
+            <NavBarItem render={props.isAuthenticated}href = "/createClient" label = 'Novo Cliente'/>
+            <NavBarItem render={props.isAuthenticated} href = "/viewProperty" label = 'Propriedades'/>
+            <NavBarItem render={props.isAuthenticated} href = "/createProperty" label = 'Nova Propriedade'/>
+            <NavBarItem render={props.isAuthenticated} href = "/viewContract" label = 'Contratos'/>
+            <NavBarItem render={props.isAuthenticated} href = "/createContract" label = 'Novo Contrato'/>
+             <NavBarItem render={props.isAuthenticated} href = "/login" onClick={props.logout} label = 'Sair' />
         </ul> 
            
                
@@ -39,4 +42,10 @@ function NavBar(){
     )
 }
 
-export default NavBar;
+export default () => (
+    <AuthConsumer>
+        {(context) => (
+            <NavBar isAuthenticated={context.isAuthenticated} logout={context.end}/>
+        )}
+    </AuthConsumer>
+)

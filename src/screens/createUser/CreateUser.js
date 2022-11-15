@@ -11,6 +11,7 @@ class CreateUser extends React.Component{
 
   state = {
     name: '',
+    username: '',
     email: '',
     password:'',
     passwordRepeat:''
@@ -19,6 +20,7 @@ class CreateUser extends React.Component{
     await axios.post('http://localhost:8080/api/user',
     {
       name: this.state.name,
+      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
       passwordRepeat: this.state.passwordRepeat
@@ -47,6 +49,10 @@ class CreateUser extends React.Component{
                 <div className='bs-component'>
                 <FormGroup label = "Nome: " htmlForm = "InputNome">
                 <input type = 'text' className="form-control" id="InputNome" placeholder="Nome"  value={this.state.name} onChange={(e) => {this.setState({name: e.target.value})}}/>
+                </FormGroup> 
+
+                 <FormGroup label = "Nome de usuário: " htmlForm = "InputUsername">
+                <input type = 'text' className="form-control" id="InputUsername" placeholder="nome de usuário"  value={this.state.username} onChange={(e) => {this.setState({username: e.target.value})}}/>
                 </FormGroup> 
 
                 <FormGroup label = "Email: " htmlForm = 'inputEmail'>

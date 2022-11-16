@@ -2,19 +2,27 @@ import React from 'react'
 import contract from '../../img/contract.jpg'
 import './DeleteContract.css';
 
-import axios from 'axios';
+//import axios from 'axios';
+import ContractApiService from '../../services/ContractApiService';
 import { withRouter } from 'react-router-dom'; 
 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
+
 
 class DeleteContract extends React.Component{
 
   state = {
     id: 0
   }
+
+  constructor(){
+    super();
+    this.service = new ContractApiService();
+  }
   delete = ()=> {
-    axios.delete(`http://localhost:8080/api/contract/${this.state.id}`,
+    //axios.delete(`http://localhost:8080/api/contract/${this.state.id}`,
+    this.service.delete(this.id
     ).then(response => 
       {
         console.log(response);

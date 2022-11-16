@@ -7,7 +7,6 @@ import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 
 import {AuthContext} from '../../main/SessionProvider';
-import Alert from '../../components/Alert';
 
 class Login extends React.Component{
 
@@ -23,15 +22,17 @@ class Login extends React.Component{
     ).then(user =>
       {
         if(user){
-          console.log(this.state.username);
+         alert(`Bem vindo, ${user.name}`);
         //  showSucessMessage(`Bem vindo, ${user.name}`);
           this.props.history.push('/viewUser');
         }else{
+          alert('Login inválido');
         //  showErrorMessage('Login inválido');
         }
       }
       ).catch(error => 
         {
+          alert('Erro processando autenticação: ', error);
        //   showErrorMessage('Erro processando autenticação: ', error);
       });
   }

@@ -3,7 +3,8 @@ import contract from '../../img/contract.jpg'
 import './CreateContract.css';
 
 import { withRouter } from 'react-router-dom'; 
-import axios from 'axios';
+//import axios from 'axios';
+import ContractApiService from '../../services/ContractApiService';
 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
@@ -14,8 +15,13 @@ class CreateContract extends React.Component{
     clientId: 0,
     propertyId: 0
   }
+  constructor(){
+    super();
+    this.service = new ContractApiService();
+  }
   save = async ()=> {
-    await axios.post('http://localhost:8080/api/contract',
+   // await axios.post('http://localhost:8080/api/contract',
+   this.service.create(
     {
       clientId: this.state.clientId,
       propertyId: this.state.propertyId
@@ -23,6 +29,7 @@ class CreateContract extends React.Component{
     ).then(response => 
       {
         console.log(response);
+        this.props.history.push('/viewContract');
       }).catch(error =>
         {
           console.log(error.response);
@@ -30,6 +37,9 @@ class CreateContract extends React.Component{
       );
 
   }
+  cancel = () => {
+    this.props.history.push('/');
+}
 
   render(){
     return (

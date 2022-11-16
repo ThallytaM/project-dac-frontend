@@ -3,10 +3,11 @@ import client from '../../img/client.jpg'
 import './CreateClient.css';
 
 import { withRouter } from 'react-router-dom'; 
-import axios from 'axios';
+//import axios from 'axios';
 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
+import ClientApiService from '../../services/ClientApiService'
 
 class CreateClient extends React .Component{
 
@@ -16,8 +17,15 @@ class CreateClient extends React .Component{
     telephone: '',
     age: 0
   }
+
+  constructor(){
+    super();
+    this.service = new ClientApiService();
+
+  }
   save = async ()=> {
-    await axios.post('http://localhost:8080/api/client',
+    //await axios.post('http://localhost:8080/api/client',
+    this.service.create(
     {
       name: this.state.name,
       cpf: this.state.cpf,
@@ -27,6 +35,7 @@ class CreateClient extends React .Component{
     ).then(response => 
       {
         console.log(response);
+        this.props.history.push('/viewClient');
       }).catch(error =>
         {
           console.log(error.response);
@@ -34,6 +43,9 @@ class CreateClient extends React .Component{
       );
 
   }
+  cancel = () => {
+    this.props.history.push('/');
+}
 
   render(){
     return (
@@ -65,6 +77,7 @@ class CreateClient extends React .Component{
               
                 <br/>
                 <button onClick={this.save} type = 'button' className="btn btn-primary"> Salvar </button>
+                <button onClick={this.cancel} type = 'button' className="btn btn-primary"> Cancelar </button>
       
                 </div>
               </div>

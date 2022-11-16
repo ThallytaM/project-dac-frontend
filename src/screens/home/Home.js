@@ -24,7 +24,7 @@ class Home extends React.Component{
             <div className='row'>
               <div className='col-lg-12'>
                 <div className='bs-component'>
-                <label>Usuário logado: {this.getLoggedUser()}</label>
+                <label>Usuário logado: {this.getLoggedUser().name}</label>
 
           
           

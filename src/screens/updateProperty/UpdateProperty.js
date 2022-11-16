@@ -3,7 +3,9 @@ import property from '../../img/property.jpg'
 import './UpdateProperty.css';
 
 import { withRouter } from 'react-router-dom'; 
-import axios from 'axios';
+//import axios from 'axios';
+import PorpertyApiService from '../../services/PropertyApiService';
+
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
 
@@ -15,6 +17,11 @@ class UpdateProperty extends React.Component{
     area: 0,
     rentValue: 0
   }
+  constructor(){
+    super();
+    this.service = new PorpertyApiService();
+  }
+
 
   componentDidMount(){
     const params = this.props.match.params;
@@ -23,7 +30,8 @@ class UpdateProperty extends React.Component{
   }
 
   update = ()=> {
-    axios.put(`http://localhost:8080/api/property/${this.state.id}`,
+    //axios.put(`http://localhost:8080/api/property/${this.state.id}`,
+    this.service.update(this.state.id,
     {
       address: this.state.address,
       area: this.state.area,
@@ -52,7 +60,8 @@ class UpdateProperty extends React.Component{
       }
       params = `${params}propertyId=${this.state.id}`;
     }
-    axios.get(`http://localhost:8080/api/property/${params}`)
+    this.service.find(params)
+    //axios.get(`http://localhost:8080/api/property/${params}`)
     .then( response => 
         {
             const property = response.data[0];

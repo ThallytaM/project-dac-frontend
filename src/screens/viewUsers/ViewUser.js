@@ -8,7 +8,9 @@ import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 import UsersTable from '../../components/UsersTable';
 
-class ViewClient extends React.Component{
+import UserApiService from '../../services/UserApiService';
+
+class ViewUser extends React.Component{
  
   state = {
     id: '',
@@ -18,12 +20,18 @@ class ViewClient extends React.Component{
     users: []
   }
 
+  constructor(){
+    super();
+    this.service = new UserApiService();
+  }
+
   componentDidMount(){
     this.find();
   }
 
   delete = (userId) => {
-    axios.delete(`http://localhost:8080/api/user/${userId}`,
+    //axios.delete(`http://localhost:8080/api/user/${userId}`,
+    this.service.delete(userId
     ).then(response => 
       {
         this.find();
@@ -39,6 +47,7 @@ class ViewClient extends React.Component{
   }
 
   find = ()=> {
+ //  this.service.find(id)
 
     var params = '?';
 
@@ -70,8 +79,9 @@ class ViewClient extends React.Component{
       params = `${params}email =${this.state.email}`;
     }
 
-    axios.get(`http://localhost:8080/api/user${params}`
-    ).then(response => 
+    //axios.get(`http://localhost:8080/api/user${params}`
+    this.service.get(this.state.id)
+    .then(response => 
       {
         const users = response.data;
         this.setState({users});
@@ -128,4 +138,4 @@ class ViewClient extends React.Component{
     );
   }
 }
-export default withRouter(ViewClient);
+export default withRouter(ViewUser);

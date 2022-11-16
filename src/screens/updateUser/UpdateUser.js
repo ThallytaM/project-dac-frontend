@@ -3,7 +3,8 @@ import client from '../../img/client.jpg'
 import './UpdateUser';
 
 import { withRouter } from 'react-router-dom'; 
-import axios from 'axios';
+//import axios from 'axios';
+import UserApiService from '../../services/UserApiService';
 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
@@ -18,6 +19,11 @@ class UpdateUser extends React.Component{
     password:'',
     passwordRepeat:''
   }
+
+  constructor(){
+    super();
+    this.service = new UserApiService();
+  }
   componentDidMount(){
     const params = this.props.match.params;
     const userId = params.id;
@@ -25,7 +31,8 @@ class UpdateUser extends React.Component{
   }
 
   update = ()=> {
-    axios.put(`http://localhost:8080/api/user/${this.state.id}`,   
+    //axios.put(`http://localhost:8080/api/user/${this.state.id}`,   
+    this.service.update(this.state.id,
     {
       name: this.state.name,
       username: this.state.username,
@@ -56,7 +63,8 @@ class UpdateUser extends React.Component{
       }
       params = `${params}userId=${this.state.id}`;
     }
-    axios.get(`http://localhost:8080/api/user/${params}`)
+    this.service.find(params)
+  //  axios.get(`http://localhost:8080/api/user/${params}`)
     .then( response => 
         {
             const user = response.data[0];
@@ -64,9 +72,9 @@ class UpdateUser extends React.Component{
             const name = user.name;
             const username = user.username;
             const email = user.email;
-            const password = user.password;
+     //       const password = user.password;
 
-            this.setState({id, name,username,email, password});
+            this.setState({id, name,username,email});
         }
     ).catch( error => 
         {

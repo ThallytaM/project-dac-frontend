@@ -8,6 +8,8 @@ import axios from 'axios';
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
 import PropertiesTable from '../../components/PropertiesTable';
+import PropertyApiService from '../../services/PropertyApiService';
+
 
 class ViewProperty extends React.Component{
 
@@ -20,11 +22,17 @@ class ViewProperty extends React.Component{
     properties: []
   }
 
+  constructor(){
+    super();
+    this.service = new PropertyApiService();
+  }
+
    componentDidMount(){
     this.find();
   }
   delete = (propertyId) => {
-    axios.delete(`http://localhost:8080/api/property/${propertyId}`,
+   // axios.delete(`http://localhost:8080/api/property/${propertyId}`,
+   this.service.delete(propertyId
     ).then(response => 
       {
         this.find();
@@ -70,7 +78,8 @@ class ViewProperty extends React.Component{
       }
       params = `${params}rentValue =${this.state.rentValue}`;
     }
-    axios.get(`http://localhost:8080/api/property${params}`)
+ //   axios.get(`http://localhost:8080/api/property${params}`)
+    this.service.find(params)
     .then(response => 
       {
         const properties = response.data;
@@ -90,7 +99,7 @@ class ViewProperty extends React.Component{
 
         <img src = {property}/>
         
-        <Card title = "Buscar Propriedade ">
+        <Card title = "Propriedades Cadastradas ">
      
           <div className='row'>
             <div className='col-lg-12'>

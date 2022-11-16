@@ -3,19 +3,24 @@ import property from '../../img/property.jpg'
 import './DeleteProperty.css';
 
 import { withRouter } from 'react-router-dom'; 
-import axios from 'axios';
+//import axios from 'axios';
+import PropertyApiService from '../../services/PropertyApiService';
 
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
-import UpdateProperty from '../updateProperty/UpdateProperty';
 
 class DeleteProperty extends React.Component{
 
   state = {
     id: 0
   }
+  constructor(){
+    super();
+    this.service = new PropertyApiService();
+  }
   delete = ()=> {
-    axios.delete(`http://localhost:8080/api/property/${this.state.id}`,
+  //  axios.delete(`http://localhost:8080/api/property/${this.state.id}`,
+  this.service.delete(this.id
     ).then(response => 
       {
         console.log(response);

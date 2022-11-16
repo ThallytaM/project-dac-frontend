@@ -2,7 +2,8 @@ import React from 'react'
 import client from '../../img/client.jpg'
 import './DeleteClient.css';
 
-import axios from 'axios';
+//import axios from 'axios';
+import ClientApiService from '../../services/ClientApiService';
 import { withRouter } from 'react-router-dom'; 
 
 import Card from '../../components/Card';
@@ -14,8 +15,14 @@ class DeleteClient extends React.Component{
   state = {
     id: 0
   }
+  constructor(){
+    super();
+    this.service = new ClientApiService();
+  }
+
   delete = ()=> {
-    axios.delete(`http://localhost:8080/api/client/${this.state.id}`,
+    //axios.delete(`http://localhost:8080/api/client/${this.state.id}`,
+    this.service.delete(this.id
     ).then(response => 
       {
         console.log(response);

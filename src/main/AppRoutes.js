@@ -16,10 +16,11 @@ import CreateContract from "../screens/createContract/CreateContract";
 import UpdateContract from "../screens/updateContract/UpdateContract";
 import DeleteContract from "../screens/deleteContract/DeleteContract";
 import ViewContract from "../screens/viewContract/ViewContract";
-
-import {AuthConsumer} from "../main/SessionProvider";
 import UpdateUser from "../screens/updateUser/UpdateUser";
 import ViewUser from "../screens/viewUsers/ViewUser";
+
+import {AuthConsumer} from "../main/SessionProvider";
+
 
 function RestrictedRoute( { component: Component, show, ...props } ){
     return (

@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
 import ContractTable from '../../components/ContractTable';
+import ContractApiService from '../../services/ContractApiService';
 
 class ViewContract extends React.Component{
 
@@ -21,10 +22,16 @@ class ViewContract extends React.Component{
   componentDidMount(){
     this.find();
   }
+
+  constructor(){
+    super();
+    this.service = new ContractApiService();
+  }
  
 
   delete = (contractId) => {
-    axios.delete(`http://localhost:8080/api/contract/${contractId}`,
+   // axios.delete(`http://localhost:8080/api/contract/${contractId}`,
+   this.service.delete(contractId
     ).then(response => 
       {
         this.find();
@@ -69,9 +76,9 @@ class ViewContract extends React.Component{
       }
       params = `${params}contractDate =${this.state.contractDate}`;
     }
-
-    axios.get(`http://localhost:8080/api/contract${params}`
-    ).then(response => 
+    this.service.get(this.state.id)
+ //   axios.get(`http://localhost:8080/api/contract${params}`
+    .then(response => 
       {
         const contracts = response.data;
         this.setState({contracts});

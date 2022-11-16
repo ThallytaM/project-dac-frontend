@@ -8,6 +8,7 @@ export default class Alert extends React.Component {
             <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
             <strong>{this.props.title}</strong> {this.props.mensage}
         </div>
+        
     )
   }
 }

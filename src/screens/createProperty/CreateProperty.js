@@ -3,7 +3,9 @@ import property from '../../img/property.jpg'
 import './CreateProperty.css';
 
 import { withRouter } from 'react-router-dom'; 
-import axios from 'axios';
+//import axios from 'axios';
+import PropertyApiService from '../../services/PropertyApiService';
+
 import Card from '../../components/Card';
 import FormGroup from '../../components/FormGroup';
 
@@ -15,8 +17,15 @@ class CreateProperty extends React.Component{
     area: 0,
     rentValue: 0
   }
+
+  constructor(){
+    super();
+    this.service = new PropertyApiService();
+  }
   save = async ()=> {
-    await axios.post('http://localhost:8080/api/property',
+    //await axios.post('http://localhost:8080/api/property',
+    this.service.create(
+
     {
       address: this.state.address,
       area: this.state.area,
@@ -25,11 +34,15 @@ class CreateProperty extends React.Component{
     ).then(response => 
       {
         console.log(response);
+        this.props.history.push('/viewProperty');
       }).catch(error =>
         {
           console.log(error.response);
         }
       );
+  }
+  cancel = () => {
+    this.props.history.push('/');
   }
 
   render(){
@@ -55,7 +68,8 @@ class CreateProperty extends React.Component{
 
               <br/>
               <button onClick={this.save} type = 'button' className="btn btn-primary"> Salvar </button>
-  
+              <button onClick={this.cancel} type = 'button' className="btn btn-primary"> Cancelar </button>
+
 
               </div>
             </div>

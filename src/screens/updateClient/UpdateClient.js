@@ -3,7 +3,8 @@ import client from '../../img/client.jpg'
 import './UpdateClient';
 
 import { withRouter } from 'react-router-dom'; 
-import axios from 'axios';
+//import axios from 'axios';
+import ClientApiService from '../../services/ClientApiService';
 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
@@ -17,14 +18,21 @@ class UpdateClient extends React.Component{
     telephone: '',
     age: 0
   }
+
+  constructor(){
+    super();
+    this.service = new ClientApiService();
+  }
   componentDidMount(){
     const params = this.props.match.params;
     const userId = params.id;
+    
     this.findById(userId);
   }
 
   update = ()=> {
-    axios.put(`http://localhost:8080/api/client/${this.state.id}`,   
+   // axios.put(`http://localhost:8080/api/client/${this.state.id}`,   
+   this.service.update(this.state.id,
     {
       name: this.state.name,
       cpf: this.state.cpf,
@@ -45,16 +53,19 @@ class UpdateClient extends React.Component{
     this.props.history.push("/ViewClient");
   }
 
-  findById = (userId) => {
-    var params = '?';
-
-    if(this.state.id != ''){
-      if(params != '?'){
-        params = `${params}&`;
+ 
+    findById = (userId) => {
+      var params = '?';
+  
+      if(this.state.id != ''){
+        if(params != '?'){
+          params = `${params}&`;
+        }
+        params = `${params}userId=${this.state.id}`;
       }
-      params = `${params}userId=${this.state.id}`;
-    }
-    axios.get(`http://localhost:8080/api/client/${params}`)
+   
+    this.service.find(params)
+ //   axios.get(`http://localhost:8080/api/client/${params}`)
     .then( response => 
         {
             const user = response.data[0];
@@ -65,6 +76,7 @@ class UpdateClient extends React.Component{
             const age = user.age;
 
             this.setState({id, name,cpf,telephone, age});
+
         }
     ).catch( error => 
         {

@@ -3,7 +3,8 @@ import contract from '../../img/contract.jpg'
 import './UpdateContract.css';
 
 import { withRouter } from 'react-router-dom'; 
-import axios from 'axios';
+//import axios from 'axios';
+import ContractApiService from '../../services/ContractApiService';
 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
@@ -17,14 +18,19 @@ class UpdateContract extends React.Component{
     contractDate: ''
 
   }
+  constructor(){
+    super();
+    this.service = new ContractApiService();
+  }
   componentDidMount(){
     const params = this.props.match.params;
     const contractId = params.id;
     this.findById(contractId);
   }
   update =  ()=> {
-    axios.put(`http://localhost:8080/api/contract/${this.state.id}`,
-        {
+   // axios.put(`http://localhost:8080/api/contract/${this.state.id}`,
+   this.service.update(this.state.id,
+    {
       clientId: this.state.clientId,
       propertyId: this.state.propertyId
     }
@@ -51,7 +57,8 @@ class UpdateContract extends React.Component{
           }
           params = `${params}contractId=${this.state.id}`;
         }
-        axios.get(`http://localhost:8080/api/contract/${params}`)
+        this.service.find(params)
+        //axios.get(`http://localhost:8080/api/contract/${params}`)
         .then( response => 
             {
                 const contract = response.data[0];

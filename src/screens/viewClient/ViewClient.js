@@ -4,6 +4,7 @@ import './ViewClient.css';
 
 import { withRouter } from 'react-router-dom'; 
 import axios from 'axios';
+import ClientApiService from '../../services/ClientApiService';
 
 import FormGroup from '../../components/FormGroup';
 import Card from '../../components/Card';
@@ -23,10 +24,14 @@ class ViewClient extends React.Component{
   componentDidMount(){
     this.find();
   }
-
+  constructor(){
+    super();
+    this.service = new ClientApiService();
+  }
   delete = (userId) => {
-    axios.delete(`http://localhost:8080/api/client/${userId}`,
-    ).then(response => 
+ //   axios.delete(`http://localhost:8080/api/client/${userId}`,
+    this.service.delete(userId)
+    .then(response => 
       {
         this.find();
       }).catch(error =>
@@ -64,9 +69,9 @@ class ViewClient extends React.Component{
       }
       params = `${params}cpf =${this.state.cpf}`;
     }
-
-    axios.get(`http://localhost:8080/api/client${params}`
-    ).then(response => 
+    this.service.get(this.state.id)
+ //   axios.get(`http://localhost:8080/api/client${params}`
+    .then(response => 
       {
         const clients = response.data;
         this.setState({clients});

@@ -20,9 +20,10 @@ function NavBar(props){
         <div className="collapse navbar-collapse" id="navbarColor01">
         <div className="mr-auto"></div>
         <ul className="navbar-nav me-auto">
-            <NavBarItem render={props.isAuthenticated} href = "/" label = 'Home'/>
+            <NavBarItem render={!props.isAuthenticated} href = "/" label = 'Home'/>
             <NavBarItem render={!props.isAuthenticated} href = "/login" label = 'Login' />
             
+            <NavBarItem render={props.isAuthenticated} href = "/viewUser" label = 'Usuários'/>
             <NavBarItem render={props.isAuthenticated} href = "/viewClient" label = 'Clientes'/>
             <NavBarItem render={props.isAuthenticated}href = "/createClient" label = 'Novo Cliente'/>
             <NavBarItem render={props.isAuthenticated} href = "/viewProperty" label = 'Propriedades'/>
